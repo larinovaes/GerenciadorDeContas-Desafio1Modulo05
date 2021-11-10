@@ -1,4 +1,7 @@
 package zup.com.br.gerenciador.contas.enums;
 
-public class Status {
+public enum Status {
+    AGUARDANDO,
+    PAGO,
+    VENCIDA
 }
