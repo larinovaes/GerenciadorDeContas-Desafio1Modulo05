@@ -16,4 +16,11 @@ public class ContaController {
     @Autowired
     private ModelMapper modelMapper;
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public ContaDTO cadastrarConta(@RequestBody ContaDTO contaDTO) {
+        Conta conta = modelMapper.map(contaDTO,Conta.class);
+        contaService.salvarConta(conta);
+        return contaDTO;
+    }
 }
