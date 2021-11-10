@@ -5,5 +5,4 @@ public enum Tipo {
     AGUA,
     COMIDA,
     OUTROS
-
 }

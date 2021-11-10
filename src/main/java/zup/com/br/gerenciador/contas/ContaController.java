@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import zup.com.br.gerenciador.contas.contadto.ContaDTO;
-import zup.com.br.gerenciador.contas.enums.Status;
 
 @RestController
 @RequestMapping("/contas")
