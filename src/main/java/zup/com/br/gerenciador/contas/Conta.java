@@ -3,10 +3,7 @@ package zup.com.br.gerenciador.contas;
 import zup.com.br.gerenciador.contas.enums.Status;
 import zup.com.br.gerenciador.contas.enums.Tipo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -14,13 +11,16 @@ import java.time.LocalDateTime;
 @Table(name = "contas")
 public class Conta {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(nullable = false)
     private String nome;
     private double valor;
     private LocalDate dataDeVencimento;
     private LocalDateTime dataDePagamento;
+    @Enumerated(EnumType.STRING)
     private Status status;
+    @Enumerated(EnumType.STRING)
     private Tipo tipo;
 
     public Conta() {

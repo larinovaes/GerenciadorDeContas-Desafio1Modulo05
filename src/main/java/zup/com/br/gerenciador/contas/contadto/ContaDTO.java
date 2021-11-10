@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 
 public class ContaDTO {
 
+    private int id;
     private String nome;
     private double valor;
     private LocalDate dataDeVencimento;
@@ -65,5 +66,13 @@ public class ContaDTO {
 
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
