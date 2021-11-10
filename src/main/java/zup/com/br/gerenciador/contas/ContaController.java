@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import zup.com.br.gerenciador.contas.contadto.ContaDTO;
+import zup.com.br.gerenciador.contas.enums.Status;
 
 @RestController
 @RequestMapping("/contas")
@@ -19,8 +20,9 @@ public class ContaController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ContaDTO cadastrarConta(@RequestBody ContaDTO contaDTO) {
-        Conta conta = modelMapper.map(contaDTO,Conta.class);
+        Conta conta = modelMapper.map(contaDTO, Conta.class);
         contaService.salvarConta(conta);
+        contaDTO = modelMapper.map(conta, ContaDTO.class);
         return contaDTO;
     }
 }
