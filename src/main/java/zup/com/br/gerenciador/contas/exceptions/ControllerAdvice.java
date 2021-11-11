@@ -1,7 +1,6 @@
 package zup.com.br.gerenciador.contas.exceptions;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -44,4 +43,5 @@ public class ControllerAdvice {
 
         return camposInvalidos;
     }
+
 }

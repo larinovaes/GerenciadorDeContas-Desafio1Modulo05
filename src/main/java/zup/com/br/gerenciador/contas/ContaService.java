@@ -52,4 +52,7 @@ public class ContaService {
         }
     }
 
+    public Conta buscarContaEspecifica(Integer id) {
+
+    }
 }

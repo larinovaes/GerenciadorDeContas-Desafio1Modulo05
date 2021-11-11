@@ -1,6 +1,6 @@
 package zup.com.br.gerenciador.contas.exceptions;
 
-public class MensagemGenerica{
+public class MensagemGenerica {
 
     private String mensagem;
 
