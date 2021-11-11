@@ -30,10 +30,10 @@ public class ControllerAdvice {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public CampoInvalido manipularErroDeTipoNull(HttpMessageNotReadableException exception) {
-        CampoInvalido campoInvalido = new CampoInvalido("Campo obrigatório", "Tipo");
+    public MensagemGenerica manipularErroDeTipoNull(HttpMessageNotReadableException exception) {
+        MensagemGenerica mensagemGenerica = new MensagemGenerica("Campo obrigatório");
 
-        return campoInvalido;
+        return mensagemGenerica;
     }
 
     @ExceptionHandler(ContaNaoEncontradaException.class)
