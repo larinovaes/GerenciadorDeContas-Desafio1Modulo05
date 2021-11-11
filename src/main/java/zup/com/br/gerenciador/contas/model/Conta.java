@@ -1,4 +1,4 @@
-package zup.com.br.gerenciador.contas;
+package zup.com.br.gerenciador.contas.model;
 
 import zup.com.br.gerenciador.contas.enums.Status;
 import zup.com.br.gerenciador.contas.enums.Tipo;

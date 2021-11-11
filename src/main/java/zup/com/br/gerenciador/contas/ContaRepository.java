@@ -2,6 +2,7 @@ package zup.com.br.gerenciador.contas;
 
 import org.springframework.data.repository.CrudRepository;
 import zup.com.br.gerenciador.contas.enums.Status;
+import zup.com.br.gerenciador.contas.model.Conta;
 
 import java.util.List;
 

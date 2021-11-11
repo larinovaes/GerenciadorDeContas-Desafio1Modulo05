@@ -8,6 +8,7 @@ import zup.com.br.gerenciador.contas.contadto.ContaDTO;
 import zup.com.br.gerenciador.contas.contadto.ContaStatusDTO;
 import zup.com.br.gerenciador.contas.contadto.ResumoContaDTO;
 import zup.com.br.gerenciador.contas.enums.Status;
+import zup.com.br.gerenciador.contas.model.Conta;
 
 import javax.validation.Valid;
 import java.util.ArrayList;

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import zup.com.br.gerenciador.contas.enums.Status;
 import zup.com.br.gerenciador.contas.exceptions.ContaNaoEncontradaException;
+import zup.com.br.gerenciador.contas.model.Conta;
 
 
 import java.time.LocalDate;
