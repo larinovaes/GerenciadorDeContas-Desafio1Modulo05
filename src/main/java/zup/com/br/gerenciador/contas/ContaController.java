@@ -9,6 +9,7 @@ import zup.com.br.gerenciador.contas.contadto.ContaStatusDTO;
 import zup.com.br.gerenciador.contas.contadto.ResumoContaDTO;
 import zup.com.br.gerenciador.contas.enums.Status;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class ContaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ContaDTO cadastrarConta(@RequestBody ContaDTO contaDTO) {
+    public ContaDTO cadastrarConta(@RequestBody @Valid ContaDTO contaDTO) {
         Conta conta = modelMapper.map(contaDTO, Conta.class);
         contaService.salvarConta(conta);
         contaDTO = modelMapper.map(conta, ContaDTO.class);

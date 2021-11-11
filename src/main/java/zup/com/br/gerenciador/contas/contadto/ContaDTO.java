@@ -3,16 +3,21 @@ package zup.com.br.gerenciador.contas.contadto;
 import zup.com.br.gerenciador.contas.enums.Status;
 import zup.com.br.gerenciador.contas.enums.Tipo;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class ContaDTO {
     private int id;
+    @NotBlank(message = "Campo obrigatório")
     private String nome;
+    @NotBlank(message = "Campo obrigatório")
     private double valor;
+    @NotBlank(message = "Campo obrigatório")
     private LocalDate dataDeVencimento;
     private LocalDateTime dataDePagamento;
     private Status status;
+    @NotBlank(message = "Campo obrigatório")
     private Tipo tipo;
 
     public ContaDTO() {
