@@ -1,23 +1,27 @@
 package zup.com.br.gerenciador.contas.contadto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import zup.com.br.gerenciador.contas.enums.Status;
 import zup.com.br.gerenciador.contas.enums.Tipo;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class ContaDTO {
     private int id;
-    @NotBlank(message = "Campo obrigatório")
+    @NotBlank
+    @Size(min = 5, max = 20, message = "Esse campo permite no minimo 2 caractere e no maximo 20")
     private String nome;
-    @NotBlank(message = "Campo obrigatório")
+    @NotBlank
     private double valor;
-    @NotBlank(message = "Campo obrigatório")
+    @NotBlank
     private LocalDate dataDeVencimento;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataDePagamento;
     private Status status;
-    @NotBlank(message = "Campo obrigatório")
+    @NotBlank
     private Tipo tipo;
 
     public ContaDTO() {
