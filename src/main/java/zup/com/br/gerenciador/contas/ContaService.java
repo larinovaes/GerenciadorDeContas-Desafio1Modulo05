@@ -53,6 +53,11 @@ public class ContaService {
     }
 
     public Conta buscarContaEspecifica(Integer id) {
-
+        for (Conta conta: contaRepository.findAll()) {
+            if (id.equals(conta.getId())) {
+                return conta;
+            }
+        }
+        throw new ContaNaoEncontradaException(id);
     }
 }

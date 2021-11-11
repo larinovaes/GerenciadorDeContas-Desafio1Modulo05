@@ -54,4 +54,10 @@ public class ContaController {
 
         return contaDTO;
     }
+
+    @GetMapping("/{id}")
+    public Conta exibirContaEspecifica(@PathVariable Integer id) {
+        return contaService.buscarContaEspecifica(id);
+
+    }
 }
