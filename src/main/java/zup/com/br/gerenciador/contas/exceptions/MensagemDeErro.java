@@ -3,9 +3,9 @@ package zup.com.br.gerenciador.contas.exceptions;
 public class MensagemDeErro {
 
     private String mensagem;
-    private String campo;
 
-    public MensagemDeErro() {
+    public MensagemDeErro(String mensagem) {
+        this.mensagem = mensagem;
     }
 
     public String getMensagem() {
@@ -16,11 +16,4 @@ public class MensagemDeErro {
         this.mensagem = mensagem;
     }
 
-    public String getCampo() {
-        return campo;
-    }
-
-    public void setCampo(String campo) {
-        this.campo = campo;
-    }
 }
