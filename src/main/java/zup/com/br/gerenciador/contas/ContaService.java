@@ -36,4 +36,17 @@ public class ContaService {
         return contas;
     }
 
+    public Conta pagarConta(Integer id, Status status) {
+        Optional<Conta> contaOptional = contaRepository.findById(id);
+        if (contaOptional.isPresent()) {
+            Conta conta = contaOptional.get();
+            conta.setStatus(status);
+            conta.setDataDePagamento(LocalDateTime.now());
+            contaRepository.save(conta);
+            return conta;
+        } else {
+            throw new IllegalArgumentException(id.toString());
+        }
+    }
+
 }
