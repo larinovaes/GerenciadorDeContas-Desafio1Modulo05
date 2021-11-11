@@ -5,6 +5,7 @@ import zup.com.br.gerenciador.contas.enums.Status;
 import zup.com.br.gerenciador.contas.enums.Tipo;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,18 +15,18 @@ public class ContaDTO {
     @NotBlank
     @Size(min = 5, max = 20, message = "Esse campo permite no minimo 2 caractere e no maximo 20")
     private String nome;
-    @NotBlank
-    private double valor;
-    @NotBlank
+    @NotNull
+    private Double valor;
+    @NotNull
     private LocalDate dataDeVencimento;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataDePagamento;
     private Status status;
-    @NotBlank
+    @NotNull
     private Tipo tipo;
 
     public ContaDTO() {
-
+     super();
     }
 
     public String getNome() {
