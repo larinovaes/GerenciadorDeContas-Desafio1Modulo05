@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import zup.com.br.gerenciador.contas.contadto.ContaDTO;
+import zup.com.br.gerenciador.contas.contadto.ContaStatusDTO;
 import zup.com.br.gerenciador.contas.contadto.ResumoContaDTO;
 import zup.com.br.gerenciador.contas.enums.Status;
 
@@ -43,4 +44,12 @@ public class ContaController {
         return contas;
     }
 
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ContaDTO pagarConta(@RequestBody ContaStatusDTO contaStatusDTO, @PathVariable Integer id) {
+        Conta contaLocalizada = contaService.pagarConta(id, contaStatusDTO.getStatus());
+        ContaDTO contaDTO = modelMapper.map(contaLocalizada, ContaDTO.class);
+
+        return contaDTO;
+    }
 }
