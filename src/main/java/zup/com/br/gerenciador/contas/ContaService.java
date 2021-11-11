@@ -53,11 +53,19 @@ public class ContaService {
     }
 
     public Conta buscarContaEspecifica(Integer id) {
-        for (Conta conta: contaRepository.findAll()) {
+        for (Conta conta : contaRepository.findAll()) {
             if (id.equals(conta.getId())) {
                 return conta;
             }
         }
         throw new ContaNaoEncontradaException(id);
+    }
+
+    public void deletarConta(Integer id) {
+        if (contaRepository.existsById(id)) {
+            contaRepository.deleteById(id);
+        } else {
+            throw new ContaNaoEncontradaException(id);
+        }
     }
 }
