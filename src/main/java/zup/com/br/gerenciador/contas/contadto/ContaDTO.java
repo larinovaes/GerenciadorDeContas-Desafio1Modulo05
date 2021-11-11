@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class ContaDTO {
     private int id;
     @NotBlank
-    @Size(min = 5, max = 20, message = "Esse campo permite no minimo 2 caractere e no maximo 20")
+    @Size(min = 2, max = 20, message = "Esse campo permite no minimo 2 caractere e no maximo 20")
     private String nome;
     @NotNull
     private Double valor;
