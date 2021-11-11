@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class ContaDTO {
-
     private int id;
     private String nome;
     private double valor;
@@ -76,3 +75,4 @@ public class ContaDTO {
         this.id = id;
     }
 }
+

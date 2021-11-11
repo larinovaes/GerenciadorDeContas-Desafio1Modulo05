@@ -5,7 +5,10 @@ import org.springframework.stereotype.Service;
 import zup.com.br.gerenciador.contas.enums.Status;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ContaService {
@@ -19,12 +22,12 @@ public class ContaService {
         return conta;
     }
 
-    public List<Conta> exibirTodasAsContas (String nome, Double valor,Integer id,Status status) {
+    public List<Conta> exibirTodasAsContas(String nome, Double valor, Integer id, Status status) {
         if (nome != null) {
             contaRepository.findAllBynome(nome);
-        } else if(valor != null) {
+        } else if (valor != null) {
             contaRepository.findAllByvalor(valor);
-        } else if(id != null) {
+        } else if (id != null) {
             contaRepository.findAllByid(id);
         } else if (status != null) {
             contaRepository.findAllBystatus(status);

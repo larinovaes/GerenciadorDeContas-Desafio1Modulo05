@@ -8,7 +8,6 @@ import zup.com.br.gerenciador.contas.contadto.ContaDTO;
 import zup.com.br.gerenciador.contas.contadto.ResumoContaDTO;
 import zup.com.br.gerenciador.contas.enums.Status;
 
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,11 +35,12 @@ public class ContaController {
                                                     @RequestParam(required = false) String nome,
                                                     @RequestParam(required = false) Status status,
                                                     @RequestParam(required = false) Double valor) {
-      List<ResumoContaDTO> contas = new ArrayList<>();
-        for (Conta conta: contaService.exibirTodasAsContas(nome, valor, id, status)) {
+        List<ResumoContaDTO> contas = new ArrayList<>();
+        for (Conta conta : contaService.exibirTodasAsContas(nome, valor, id, status)) {
             ResumoContaDTO resumo = modelMapper.map(conta, ResumoContaDTO.class);
             contas.add(resumo);
         }
         return contas;
     }
+
 }
