@@ -1,6 +1,6 @@
 package zup.com.br.gerenciador.contas.exceptions;
 
-public class CampoInvalido extends RuntimeException {
+public class CampoInvalido {
 
     private String mensagem;
     private String campo;

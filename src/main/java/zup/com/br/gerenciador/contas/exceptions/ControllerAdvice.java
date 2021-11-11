@@ -2,6 +2,7 @@ package zup.com.br.gerenciador.contas.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -25,6 +26,14 @@ public class ControllerAdvice {
         }
 
         return erros;
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    public CampoInvalido manipularErroDeTipoNull(HttpMessageNotReadableException exception) {
+        CampoInvalido campoInvalido = new CampoInvalido("Campo obrigatório", "Tipo");
+
+        return campoInvalido;
     }
 
     @ExceptionHandler(ContaNaoEncontradaException.class)
