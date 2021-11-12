@@ -81,7 +81,7 @@ public class ContaController {
             ContaDTO contaDTO = modelMapper.map(conta, ContaDTO.class);
             contasDTO.add(contaDTO);
         }
-      return contasDTO;
+        return contasDTO;
     }
 
     @GetMapping("/tipo/{tipo}")
@@ -90,7 +90,7 @@ public class ContaController {
         List<Conta> contas = contaService.buscarContasPorTipo(tipo);
         List<ContaDTO> contaDTOS = new ArrayList<>();
 
-        for (Conta conta: contas) {
+        for (Conta conta : contas) {
             ContaDTO contaDTO = modelMapper.map(conta, ContaDTO.class);
             contaDTOS.add(contaDTO);
         }
@@ -102,7 +102,7 @@ public class ContaController {
         List<Conta> conta = contaService.buscarContasPorValorMenorQue(valor);
         List<ContaDTO> contasDTOS = new ArrayList<>();
 
-        for (Conta contaReferencia: conta) {
+        for (Conta contaReferencia : conta) {
             ContaDTO contaDTO = modelMapper.map(contaReferencia, ContaDTO.class);
             contasDTOS.add(contaDTO);
         }
@@ -114,7 +114,21 @@ public class ContaController {
         List<Conta> conta = contaService.buscarContasPorValorMaiorQue(valor);
         List<ContaDTO> contasDTOS = new ArrayList<>();
 
-        for (Conta contaReferencia: conta) {
+        for (Conta contaReferencia : conta) {
+            ContaDTO contaDTO = modelMapper.map(contaReferencia, ContaDTO.class);
+            contasDTOS.add(contaDTO);
+        }
+        return contasDTOS;
+    }
+
+    @GetMapping("/valores-aproximados")
+    public List<ContaDTO> buscarPorContasComValoresAproximadas(@RequestParam("valorMenor") Double valorMenor,
+                                                               @RequestParam("valorMaior") Double valorMaior) {
+
+        List<Conta> conta = contaService.buscarContasAproximadas(valorMenor, valorMaior);
+        List<ContaDTO> contasDTOS = new ArrayList<>();
+
+        for (Conta contaReferencia : conta) {
             ContaDTO contaDTO = modelMapper.map(contaReferencia, ContaDTO.class);
             contasDTOS.add(contaDTO);
         }
