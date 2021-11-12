@@ -70,4 +70,9 @@ public class ContaController {
         return contaDTO;
     }
 
+    @GetMapping("/status/{status}")
+    public List<Conta> buscarPorStatus(@PathVariable Status status) {
+
+        return  contaService.buscarContaPorStatus(status);
+    }
 }
