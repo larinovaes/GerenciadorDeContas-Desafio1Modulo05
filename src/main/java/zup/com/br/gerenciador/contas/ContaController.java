@@ -1,5 +1,6 @@
 package zup.com.br.gerenciador.contas;
 
+import org.aspectj.weaver.patterns.HasThisTypePatternTriedToSneakInSomeGenericOrParameterizedTypePatternMatchingStuffAnywhereVisitor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import zup.com.br.gerenciador.contas.contadto.ResumoContaDTO;
 import zup.com.br.gerenciador.contas.enums.Status;
 
 import zup.com.br.gerenciador.contas.enums.Tipo;
+import zup.com.br.gerenciador.contas.exceptions.ValorNaoEncontrado;
 import zup.com.br.gerenciador.contas.model.Conta;
 
 import javax.validation.Valid;
@@ -50,11 +52,14 @@ public class ContaController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ContaDTO apagarconta(@RequestBody ContaStatusDTO contaStatusDTO, @PathVariable Integer id) {
-        Conta contaLocalizada = contaService.pagarConta(id, contaStatusDTO.getStatus());
-        ContaDTO contaDTO = modelMapper.map(contaLocalizada, ContaDTO.class);
+    public ContaDTO pagarconta(@RequestBody ContaStatusDTO contaStatusDTO, @PathVariable Integer id) {
+        if (contaStatusDTO.getStatus() == Status.PAGO) {
+            Conta contaLocalizada = contaService.pagarConta(id, contaStatusDTO.getStatus());
+            ContaDTO contaDTO = modelMapper.map(contaLocalizada, ContaDTO.class);
 
-        return contaDTO;
+            return contaDTO;
+        }
+        throw new RuntimeException();
     }
 
     @DeleteMapping("/{id}")
@@ -124,7 +129,6 @@ public class ContaController {
     @GetMapping("/valores-aproximados")
     public List<ContaDTO> buscarPorContasComValoresAproximadas(@RequestParam("valorMenor") Double valorMenor,
                                                                @RequestParam("valorMaior") Double valorMaior) {
-
         List<Conta> conta = contaService.buscarContasAproximadas(valorMenor, valorMaior);
         List<ContaDTO> contasDTOS = new ArrayList<>();
 

@@ -4,6 +4,7 @@ public class MensagemGenerica {
 
     private String mensagem;
 
+
     public MensagemGenerica(String mensagem) {
         this.mensagem = mensagem;
     }

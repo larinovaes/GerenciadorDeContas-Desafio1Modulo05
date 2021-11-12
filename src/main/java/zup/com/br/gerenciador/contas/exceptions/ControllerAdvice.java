@@ -31,6 +31,7 @@ public class ControllerAdvice {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public MensagemGenerica manipularErroDeTipoNull(HttpMessageNotReadableException exception) {
+
         MensagemGenerica mensagemGenerica = new MensagemGenerica("Campo obrigatório não encontrado");
 
         return mensagemGenerica;
@@ -44,6 +45,14 @@ public class ControllerAdvice {
 
         return camposInvalidos;
     }
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public CampoInvalido manipularErrosDeContaNaoEcontrada(RuntimeException exception) {
+        CampoInvalido camposInvalidos = new CampoInvalido("O campo aceita apenas PAGO, por favor digite"
+               + " novamente", "Status");
+
+        return camposInvalidos;
+    }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -51,7 +60,5 @@ public class ControllerAdvice {
         MensagemGenerica mensagemGenerica = new MensagemGenerica("Requisição inválido");
         return mensagemGenerica;
     }
-
-
 
 }

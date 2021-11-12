@@ -20,6 +20,7 @@ public class ContaService {
     private ContaRepository contaRepository;
 
     public Conta salvarConta(Conta conta) {
+        //estrutura de decisão
         conta.setStatus(conta.getDataDeVencimento().isBefore(LocalDate.now()) ? Status.VENCIDA : Status.AGUARDANDO);
         contaRepository.save(conta);
         return conta;
