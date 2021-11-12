@@ -23,7 +23,6 @@ public interface ContaRepository extends CrudRepository<Conta, Integer> {
     @Query(value = "SELECT * FROM contas WHERE valor BETWEEN :valorMenor AND :valorMaior", nativeQuery = true)
     List<Conta> findAllValorEntre(@Param("valorMenor") double valorMenor, @Param("valorMaior") double valorMaior);
 
-
     List<Conta> findAllBystatus(Status status);
 
     List<Conta> findAllBytipo(Tipo tipo);

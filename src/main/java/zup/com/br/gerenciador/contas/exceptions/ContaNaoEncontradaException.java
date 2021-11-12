@@ -1,6 +1,6 @@
 package zup.com.br.gerenciador.contas.exceptions;
 
-public class ContaNaoEncontradaException extends RuntimeException{
+public class ContaNaoEncontradaException extends RuntimeException {
 
     private Integer idConta;
 

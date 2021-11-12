@@ -1,6 +1,5 @@
 package zup.com.br.gerenciador.contas;
 
-import org.aspectj.weaver.patterns.HasThisTypePatternTriedToSneakInSomeGenericOrParameterizedTypePatternMatchingStuffAnywhereVisitor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +10,6 @@ import zup.com.br.gerenciador.contas.contadto.ResumoContaDTO;
 import zup.com.br.gerenciador.contas.enums.Status;
 
 import zup.com.br.gerenciador.contas.enums.Tipo;
-import zup.com.br.gerenciador.contas.exceptions.ValorNaoEncontrado;
 import zup.com.br.gerenciador.contas.model.Conta;
 
 import javax.validation.Valid;
