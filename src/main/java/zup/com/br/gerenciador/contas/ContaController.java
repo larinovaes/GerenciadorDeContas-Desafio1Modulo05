@@ -72,20 +72,29 @@ public class ContaController {
     }
 
     @GetMapping("/status/{status}")
-    public List<Conta> buscarPorStatus(@PathVariable Status status) {
+    public List<ContaDTO> buscarPorStatus(@PathVariable Status status) {
+        //comandos a seguir serve para transformando List<Conta> em uma Lista<ContaDTO>
+        List<Conta> contas = contaService.buscarContasPorStatus(status);
+        List<ContaDTO> contasDTO = new ArrayList<>();
 
-        return  contaService.buscarContasPorStatus(status);
+        for (Conta conta : contas) {
+            ContaDTO contaDTO = modelMapper.map(conta, ContaDTO.class);
+            contasDTO.add(contaDTO);
+        }
+      return contasDTO;
     }
 
     @GetMapping("/tipo/{tipo}")
-    public List<Conta> buscarContasPorTipo(@PathVariable Tipo tipo) {
-        return contaService.buscarContasPorTipo(tipo);
-    }
+    public List<ContaDTO> buscarContasPorTipo(@PathVariable Tipo tipo) {
+        //comandos a seguir serve para transformando List<Conta> em uma Lista<ContaDTO>
+        List<Conta> contas = contaService.buscarContasPorTipo(tipo);
+        List<ContaDTO> contaDTOS = new ArrayList<>();
 
-    @GetMapping("/valor/{valor}")
-    public List<Conta> buscarContasPorValor(@PathVariable Double valor) {
-        return contaService.buscarContasPorValor(valor);
+        for (Conta conta: contas) {
+            ContaDTO contaDTO = modelMapper.map(conta, ContaDTO.class);
+            contaDTOS.add(contaDTO);
+        }
+        return contaDTOS;
     }
-
 
 }

@@ -1,6 +1,5 @@
 package zup.com.br.gerenciador.contas;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import zup.com.br.gerenciador.contas.enums.Status;
 import zup.com.br.gerenciador.contas.enums.Tipo;
@@ -13,8 +12,7 @@ public interface ContaRepository extends CrudRepository<Conta, Integer> {
 
     List<Conta> findAllBynome(String nome);
 
-    @Query(value = "SELECT * FROM contas WHERE VALOR BETWEEN :valor*05 AND :valor*1.3", nativeQuery = true)
-    List<Conta> findAllByvalor(double valor);
+    List<Conta> findAllByvalor( double valor);
 
     List<Conta> findAllBystatus(Status status);
 

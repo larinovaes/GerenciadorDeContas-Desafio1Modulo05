@@ -10,7 +10,6 @@ import zup.com.br.gerenciador.contas.model.Conta;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,15 +71,11 @@ public class ContaService {
     }
 
     public List<Conta> buscarContasPorStatus(Status status) {
-        return (List<Conta>) contaRepository.findAllBystatus(status);
+        return contaRepository.findAllBystatus(status);
     }
 
     public List<Conta> buscarContasPorTipo(Tipo tipo) {
-        return (List<Conta>) contaRepository.findAllBytipo(tipo);
+        return  contaRepository.findAllBytipo(tipo);
     }
-     public List<Conta> buscarContasPorValor(Double valor) {
-        return (List<Conta>) contaRepository.findAllByvalor(valor);
-    }
-
 
 }
