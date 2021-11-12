@@ -108,4 +108,17 @@ public class ContaController {
         }
         return contasDTOS;
     }
+
+    @GetMapping("/maior-que")
+    public List<ContaDTO> buscarContaPorValorMaiorQue(@RequestParam("valor") Double valor) {
+        List<Conta> conta = contaService.buscarContasPorValorMaiorQue(valor);
+        List<ContaDTO> contasDTOS = new ArrayList<>();
+
+        for (Conta contaReferencia: conta) {
+            ContaDTO contaDTO = modelMapper.map(contaReferencia, ContaDTO.class);
+            contasDTOS.add(contaDTO);
+        }
+        return contasDTOS;
+    }
+
 }
