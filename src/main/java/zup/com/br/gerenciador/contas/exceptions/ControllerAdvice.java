@@ -48,7 +48,7 @@ public class ControllerAdvice {
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public MensagemGenerica manipularErrosDeFiltroPorStatus(MethodArgumentTypeMismatchException exception) {
-        MensagemGenerica mensagemGenerica = new MensagemGenerica("Status inválido");
+        MensagemGenerica mensagemGenerica = new MensagemGenerica("Requisição inválido");
         return mensagemGenerica;
     }
 
