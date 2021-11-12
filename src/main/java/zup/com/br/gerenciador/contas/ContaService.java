@@ -78,4 +78,9 @@ public class ContaService {
     public List<Conta> buscarContasPorTipo(Tipo tipo) {
         return (List<Conta>) contaRepository.findAllBytipo(tipo);
     }
+     public List<Conta> buscarContasPorValor(Double valor) {
+        return (List<Conta>) contaRepository.findAllByvalor(valor);
+    }
+
+
 }
