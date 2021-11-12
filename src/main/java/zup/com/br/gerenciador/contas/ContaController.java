@@ -97,4 +97,15 @@ public class ContaController {
         return contaDTOS;
     }
 
+    @GetMapping("/menor-que")
+    public List<ContaDTO> buscarContasPorValorMenorQue(@RequestParam("valor") Double valor) {
+        List<Conta> conta = contaService.buscarContasPorValorMenorQue(valor);
+        List<ContaDTO> contasDTOS = new ArrayList<>();
+
+        for (Conta contaReferencia: conta) {
+            ContaDTO contaDTO = modelMapper.map(contaReferencia, ContaDTO.class);
+            contasDTOS.add(contaDTO);
+        }
+        return contasDTOS;
+    }
 }
