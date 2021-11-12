@@ -45,4 +45,11 @@ public class ControllerAdvice {
         return camposInvalidos;
     }
 
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public MensagemGenerica manipularErrosDeFiltroPorStatus(MethodArgumentTypeMismatchException exception) {
+        MensagemGenerica mensagemGenerica = new MensagemGenerica("Status inválido");
+        return mensagemGenerica;
+    }
+
 }
