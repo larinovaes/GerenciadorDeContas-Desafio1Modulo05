@@ -9,6 +9,7 @@ import zup.com.br.gerenciador.contas.contadto.ContaStatusDTO;
 import zup.com.br.gerenciador.contas.contadto.ResumoContaDTO;
 import zup.com.br.gerenciador.contas.enums.Status;
 
+import zup.com.br.gerenciador.contas.enums.Tipo;
 import zup.com.br.gerenciador.contas.model.Conta;
 
 import javax.validation.Valid;
@@ -73,6 +74,11 @@ public class ContaController {
     @GetMapping("/status/{status}")
     public List<Conta> buscarPorStatus(@PathVariable Status status) {
 
-        return  contaService.buscarContaPorStatus(status);
+        return  contaService.buscarContasPorStatus(status);
+    }
+
+    @GetMapping("/tipo/{tipo}")
+    public List<Conta> buscarContasPorTipo(@PathVariable Tipo tipo) {
+        return contaService.buscarContasPorTipo(tipo);
     }
 }
