@@ -8,6 +8,7 @@ import zup.com.br.gerenciador.contas.contadto.ContaDTO;
 import zup.com.br.gerenciador.contas.contadto.ContaStatusDTO;
 import zup.com.br.gerenciador.contas.contadto.ResumoContaDTO;
 import zup.com.br.gerenciador.contas.enums.Status;
+
 import zup.com.br.gerenciador.contas.model.Conta;
 
 import javax.validation.Valid;
@@ -48,23 +49,25 @@ public class ContaController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ContaDTO pagarConta(@RequestBody ContaStatusDTO contaStatusDTO, @PathVariable Integer id) {
+    public ContaDTO apagarconta(@RequestBody ContaStatusDTO contaStatusDTO, @PathVariable Integer id) {
         Conta contaLocalizada = contaService.pagarConta(id, contaStatusDTO.getStatus());
         ContaDTO contaDTO = modelMapper.map(contaLocalizada, ContaDTO.class);
 
         return contaDTO;
     }
 
-    @GetMapping("/{id}")
-    public Conta exibirContaEspecifica(@PathVariable Integer id) {
-        return contaService.buscarContaEspecifica(id);
-
-    }
-
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletarConta(@PathVariable Integer id) {
         contaService.deletarConta(id);
+    }
+
+    @GetMapping("/{id}")
+    public ContaDTO exibirContaEspecificaPeloOid(@PathVariable Integer id) {
+        Conta conta = contaService.buscarContaEspecifica(id);
+        ContaDTO contaDTO = modelMapper.map(conta, ContaDTO.class);
+
+        return contaDTO;
     }
 
 }

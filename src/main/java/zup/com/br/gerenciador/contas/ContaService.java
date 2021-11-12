@@ -9,6 +9,7 @@ import zup.com.br.gerenciador.contas.model.Conta;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,8 +53,16 @@ public class ContaService {
         }
     }
 
+    public void deletarConta(Integer id) {
+        if (contaRepository.existsById(id)) {
+            contaRepository.deleteById(id);
+        } else {
+            throw new ContaNaoEncontradaException(id);
+        }
+    }
+
     public Conta buscarContaEspecifica(Integer id) {
-        for (Conta conta : contaRepository.findAll()) {
+        for (Conta conta: contaRepository.findAll()) {
             if (id.equals(conta.getId())) {
                 return conta;
             }
@@ -61,11 +70,7 @@ public class ContaService {
         throw new ContaNaoEncontradaException(id);
     }
 
-    public void deletarConta(Integer id) {
-        if (contaRepository.existsById(id)) {
-            contaRepository.deleteById(id);
-        } else {
-            throw new ContaNaoEncontradaException(id);
-        }
+    public List<Conta> buscarContaPorStatus(Status status) {
+        return (List<Conta>) contaRepository.findAllBystatus(status);
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +29,9 @@ public class ControllerAdvice {
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public MensagemGenerica manipularErroDeTipoNull(HttpMessageNotReadableException exception) {
-        MensagemGenerica mensagemGenerica = new MensagemGenerica("Campo obrigatório");
+        MensagemGenerica mensagemGenerica = new MensagemGenerica("Campo obrigatório não encontrado");
 
         return mensagemGenerica;
     }
