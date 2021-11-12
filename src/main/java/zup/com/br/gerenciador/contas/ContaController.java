@@ -81,4 +81,11 @@ public class ContaController {
     public List<Conta> buscarContasPorTipo(@PathVariable Tipo tipo) {
         return contaService.buscarContasPorTipo(tipo);
     }
+
+    @GetMapping("/valor/{valor}")
+    public List<Conta> buscarContasPorValor(@PathVariable Double valor) {
+        return contaService.buscarContasPorValor(valor);
+    }
+
+
 }
