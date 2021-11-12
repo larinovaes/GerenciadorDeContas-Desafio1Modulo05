@@ -3,6 +3,7 @@ package zup.com.br.gerenciador.contas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import zup.com.br.gerenciador.contas.enums.Status;
+import zup.com.br.gerenciador.contas.enums.Tipo;
 import zup.com.br.gerenciador.contas.exceptions.ContaNaoEncontradaException;
 import zup.com.br.gerenciador.contas.model.Conta;
 
@@ -70,7 +71,11 @@ public class ContaService {
         throw new ContaNaoEncontradaException(id);
     }
 
-    public List<Conta> buscarContaPorStatus(Status status) {
+    public List<Conta> buscarContasPorStatus(Status status) {
         return (List<Conta>) contaRepository.findAllBystatus(status);
+    }
+
+    public List<Conta> buscarContasPorTipo(Tipo tipo) {
+        return (List<Conta>) contaRepository.findAllBytipo(tipo);
     }
 }
