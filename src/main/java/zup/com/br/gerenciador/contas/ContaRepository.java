@@ -14,6 +14,9 @@ public interface ContaRepository extends CrudRepository<Conta, Integer> {
 
     List<Conta> findAllBynome(String nome);
 
+    @Query(value = "SELECT * FROM contas WHERE valor = :valor", nativeQuery = true)
+    List<Conta> findAllValoresIguais(@Param("valor") double valor);
+
     @Query(value = "SELECT * FROM contas WHERE valor < :valor", nativeQuery = true)
     List<Conta> findAllByvalor(@Param("valor") double valor);
 
