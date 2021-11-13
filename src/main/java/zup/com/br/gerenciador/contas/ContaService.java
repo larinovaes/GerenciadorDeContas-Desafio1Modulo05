@@ -87,6 +87,10 @@ public class ContaService {
         return contaRepository.findAllValorMaiorQue(valor);
     }
 
+    public List<Conta> buscarContasPorValorIguais(Double valor) {
+        return contaRepository.findAllValoresIguais(valor);
+    }
+
     public List<Conta> buscarContasAproximadas(Double valorMenor, Double valorMaior) {
         return contaRepository.findAllValorEntre(valorMenor, valorMaior);
     }
