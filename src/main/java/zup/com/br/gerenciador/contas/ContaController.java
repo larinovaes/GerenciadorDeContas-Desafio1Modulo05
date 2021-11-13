@@ -124,6 +124,18 @@ public class ContaController {
         return contasDTOS;
     }
 
+    @GetMapping("/valores-iguais")
+    public List<ContaDTO> buscarContaPorValoresIguais(@RequestParam("valor") Double valor) {
+        List<Conta> conta = contaService.buscarContasPorValorIguais(valor);
+        List<ContaDTO> contasDTOS = new ArrayList<>();
+
+        for (Conta contaReferencia : conta) {
+            ContaDTO contaDTO = modelMapper.map(contaReferencia, ContaDTO.class);
+            contasDTOS.add(contaDTO);
+        }
+        return contasDTOS;
+    }
+
     @GetMapping("/valores-aproximados")
     public List<ContaDTO> buscarPorContasComValoresAproximadas(@RequestParam("valorMenor") Double valorMenor,
                                                                @RequestParam("valorMaior") Double valorMaior) {
